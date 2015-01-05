@@ -4,7 +4,6 @@ import java.util.*;
 public class NFASimulator {
 	
 	public static void execute(ArrayList<String> states,ArrayList<String> startStates,ArrayList<String> finalStates, ArrayList<Character> inputChars,ArrayList<Character> uniqueInputChars, ArrayList<ArrayList<Pair>>transitions){
-		boolean debug = false;
 		
 		ArrayList<String> currentStates = new ArrayList<String>(); //keeps track of current states (don't need set(?))
 		ArrayList<String>  acceptStates = new ArrayList<String> (); // used to list accept states
@@ -24,8 +23,6 @@ public class NFASimulator {
 			for(int j = 0; j < listAtIndex.size();j++){ //go through each transition pair in list
 				
 				Pair currPair = listAtIndex.get(j); //the current pair we are examining in this loop
-				
-				if(debug)System.out.println(currPair);
 				
 				String firstState = listAtIndex.get(j).getFirst(); // first state in pair
 				
@@ -48,8 +45,6 @@ public class NFASimulator {
 				}
 				
 			}
-			
-			if(debug)System.out.println();
 			
 		} //done processing input
 		
