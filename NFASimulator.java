@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class donohue_p1 {
+public class NFASimulator {
 	
 	public static void execute(ArrayList<String> states,ArrayList<String> startStates,ArrayList<String> finalStates, ArrayList<Character> inputChars,ArrayList<Character> uniqueInputChars, ArrayList<ArrayList<Pair>>transitions){
 		boolean debug = false;
