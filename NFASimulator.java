@@ -1,11 +1,12 @@
 import java.io.*;
 import java.util.*;
 
-public class NFASimulator {
+public class donohue_p1 {
 	
 	public static void execute(ArrayList<String> states,ArrayList<String> startStates,ArrayList<String> finalStates, ArrayList<Character> inputChars,ArrayList<Character> uniqueInputChars, ArrayList<ArrayList<Pair>>transitions){
+		boolean debug = false;
 		
-		ArrayList<String> currentStates = new ArrayList<String>(); //keeps track of current states 
+		ArrayList<String> currentStates = new ArrayList<String>(); //keeps track of current states (don't need set(?))
 		ArrayList<String>  acceptStates = new ArrayList<String> (); // used to list accept states
 		
 		for(int i = 0; i < startStates.size();i++){
@@ -130,9 +131,6 @@ public class NFASimulator {
 			
 			String p = "", q = "";
 			
-			boolean consolePrint = false;
-			boolean debug = false;
-			
 			Scanner input = new Scanner(file);
 			int lineCount = 0;
 			
@@ -142,20 +140,14 @@ public class NFASimulator {
 	    	    	uniqueInputChars.add(c);
 	    	    }
 	    	    inputChars.add(c);
-	    	}
-			
-			
-		
+	    	}	
 			
 			while(input.hasNext()) {
 				lineCount++;
-				if(consolePrint)System.out.print("Line " + lineCount + ": ");;
 		    	String nextToken = input.next();
-		    	if(consolePrint)System.out.print(nextToken);
 		    	String nextLine = input.nextLine();
 		    	String str[] = nextLine.split("\\s");
-		    	
-	    		
+		    		
 		    	for(int i = 0; i < str.length - 1;i++){
 		    		if(nextToken.equals("state")){
 			    		//make state
@@ -171,14 +163,10 @@ public class NFASimulator {
 			    		if(i == 1){
 			    			p = str[1];
 			    			pList.add(str[1]);
-			    			if(consolePrint)System.out.println("\np: " + str[1]);
 			    		}else if(i == 2){
 			    			xList.add(str[2]);
-			    			if(consolePrint)System.out.println("x: " + str[2]);
 			    		}
 			    	}
-		    		
-		    		if(consolePrint)System.out.print(str[i] + ", ");
 		    	}
 		    	
 		    	if(nextToken.equals("state")){
@@ -194,8 +182,6 @@ public class NFASimulator {
 		    		if(str.length == 4)
 		    			q = str[3];
 		    			qList.add(str[3]);
-		    			if(consolePrint)System.out.println("q: " + str[3]);
-		    		
 		    	}
 		    	
 	    		Pair pair;
@@ -203,10 +189,6 @@ public class NFASimulator {
 		    		pair = new Pair(p, q);
 		    		pairList.add(pair);
 		    	}
-		    	
-		    	
-		    	if(consolePrint)System.out.print(str[str.length-1]);
-		    	if(consolePrint)System.out.println();
 
 			}
 			
@@ -214,17 +196,10 @@ public class NFASimulator {
 				ArrayList<Pair> symbolList = new ArrayList<Pair>();
 			
 				for(int j = 0; j < pairList.size(); j++){
-					if(consolePrint)System.out.print(Character.toString(uniqueInputChars.get(i)) + "--");
-					if(consolePrint)System.out.print(xList.get(j) + "--");
-					if(consolePrint)System.out.println(pairList.get(j));
-					
 					if(xList.get(j).equals(Character.toString(uniqueInputChars.get(i)))){
-						if(consolePrint)System.out.println("add to list");
 						symbolList.add(pairList.get(j));
 					}
 				}
-				if(consolePrint)System.out.println(symbolList);
-				
 				transitions.add(symbolList);
 			}
 			
