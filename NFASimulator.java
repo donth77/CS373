@@ -5,7 +5,7 @@ public class NFASimulator {
 	
 	public static void execute(ArrayList<String> states,ArrayList<String> startStates,ArrayList<String> finalStates, ArrayList<Character> inputChars,ArrayList<Character> uniqueInputChars, ArrayList<ArrayList<Pair>>transitions){
 		
-		ArrayList<String> currentStates = new ArrayList<String>(); //keeps track of current states (don't need set(?))
+		ArrayList<String> currentStates = new ArrayList<String>(); //keeps track of current states
 		ArrayList<String>  acceptStates = new ArrayList<String> (); // used to list accept states
 		
 		for(int i = 0; i < startStates.size();i++){
