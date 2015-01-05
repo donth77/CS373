@@ -4,7 +4,6 @@ import java.util.*;
 public class NFASimulator {
 	
 	public static void execute(ArrayList<String> states,ArrayList<String> startStates,ArrayList<String> finalStates, ArrayList<Character> inputChars,ArrayList<Character> uniqueInputChars, ArrayList<ArrayList<Pair>>transitions){
-		boolean debug = false;
 		
 		ArrayList<String> currentStates = new ArrayList<String>(); //keeps track of current states 
 		ArrayList<String>  acceptStates = new ArrayList<String> (); // used to list accept states
